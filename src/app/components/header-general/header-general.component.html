@@ -1,0 +1,27 @@
+<ion-toolbar >
+
+  <ion-buttons slot="start">
+    <ion-back-button *ngIf="backButton" defaultHref="/"></ion-back-button>
+    <ion-button *ngIf="backButtonModal" (click)="close()" shape="round">
+      <ion-icon color="light" style="font-size: 25px;" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <ion-buttons *ngIf="router.url !== '/tabs/home/shopping-cart'" slot="end">
+    <ion-button (click)="goToCart()">
+      <ion-icon style="font-size: 30px;"  name="cart"></ion-icon>
+      <span *ngIf = "cartItemCount.value" class="badge">{{cartItemCount.value}}</span>
+    </ion-button>
+  </ion-buttons>
+
+  
+  <p style="font-family: 'Abril Fatface', cursive;">Biscotti <span><ion-icon name="bag-handle"></ion-icon></span></p>
+  <div class="Username" *ngIf="user">Hola, {{user.username}}</div> 
+  <ion-title>{{title}}  </ion-title>
+  </ion-toolbar>
+
+
+
+<div class="inverted-border-radius">
+ 
+  </div>

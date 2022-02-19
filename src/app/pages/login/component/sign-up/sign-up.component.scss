@@ -1,0 +1,37 @@
+        .form-input{
+         position:relative;
+         margin-bottom: 10px;
+         ion-item::part(native){
+             padding-left: 0;
+
+         }   
+
+         ion-icon{
+             position: absolute;
+             top: 15px;
+             z-index: 2;
+             font-size: 1.2rem;
+             left: 5px;
+
+         }
+         ion-label{
+             position: absolute;
+             margin-left: 35px;
+             font-weight: bolder;
+             font-size: 0.8rem;
+             top: 3px;
+         }
+         ion-input{
+             --padding-start: 0.9rem;
+             --padding-top: 36px;
+             color: #7b7b7b;
+         }
+
+        }
+
+
+
+h3{
+    position: relative;
+    padding: 10px;
+}

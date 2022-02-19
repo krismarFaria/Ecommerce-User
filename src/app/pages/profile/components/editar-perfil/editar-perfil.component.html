@@ -1,0 +1,65 @@
+<ion-content>
+  <app-header-general backButtonModal="true" title="Editar perfil"></app-header-general>
+
+
+  <ion-grid fixed>
+      <ion-row>
+  
+        <ion-card class="animate__animated animate__rotateInUpLeft">
+
+
+
+            <ion-col  size="12">
+                <div  class="ion-text-center"><ion-icon *ngIf="!imgLoaded && !image.value" style="font-size: 120px;" name="image-outline" color="medium">
+                </ion-icon></div>
+        
+        
+                
+            <ion-avatar *ngIf="image.value" style="margin: 0 auto; width:
+            120px;height:
+            120px;padding-bottom: 5px;">
+            <img [src]="image.value" />
+          </ion-avatar>
+        
+                <div class="custom-input-file">
+                  <input type="file" (change)="chooseImage($event)" class="input-file">
+                  Seleccionar Imagen
+                </div>
+              </ion-col>
+
+
+          
+        <ion-col size="12">
+  
+  
+          <form [formGroup]="form" (ngSubmit)="editProfile()">
+  
+            <!-- ----------------------------username--------------------------------------- -->
+  
+  
+            <ion-item>
+              <ion-label position="floating">Nombre de usuario:</ion-label>
+              <ion-input type="text" required formControlName="username"></ion-input>
+            </ion-item>
+  
+            
+  
+            <div class="ion-text-center" style="padding-bottom: 30px;">
+            
+              <ion-button  block type="submit" color="warning">
+              <div style="color:var(--ion-color-dark); font-weight: bold;"> Guardar</div>
+              </ion-button>
+            </div>
+  
+          </form>
+  
+  
+  
+  
+        </ion-col> </ion-card>
+      </ion-row>
+    </ion-grid>
+  
+
+
+</ion-content>

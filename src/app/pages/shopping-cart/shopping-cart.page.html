@@ -1,0 +1,127 @@
+<ion-content>
+
+  <app-header-general backButton="true" title="Carrito"></app-header-general>
+ 
+  <ion-card  class="animate__animated animate__lightSpeedInRight" *ngFor="let c of cart" lines="none">
+
+
+
+
+    
+    <div class="btn-delete">
+
+      <ion-button style="--border-radius: 100%;   width: 20px; height: 20px;" color="medium" class="ion-no-padding"
+        (click)="removeProduct(c)" >
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div style="padding: 15px;">
+      <div style="padding-left: 70px;">
+        <div style="font-weight: bold; font-size: 15px;">{{c.name}}</div>
+        <div style="color: gray;">{{c.category}}</div>
+
+
+        <ion-buttons  slot="start" >
+          <ion-button (click)="decreaseProduct(c)">
+            <ion-icon color="secondary" name="remove-circle"></ion-icon>
+          </ion-button>
+
+          <ion-button>
+            {{c.quantity}}
+          </ion-button>
+          <ion-button (click)="increaseProduct(c)">
+            <ion-icon color="secondary" name="add-circle"></ion-icon>
+          </ion-button>
+
+          <span class="price" >
+            {{c.price |currency: 'USD'}}
+          </span>
+
+
+
+        </ion-buttons>
+      </div>
+
+
+      <div style="position: absolute; bottom:0; top: 5px;">
+        <ion-avatar>
+          <img [src]="c.image" />
+        </ion-avatar>
+      </div>
+
+    </div>
+
+
+
+
+
+ 
+  <!-- Skeleton -->
+
+
+  <div  style="padding-top: 25%;" class="ion-text-center" *ngIf="!waiting && purchases.length == 0">
+    <ion-icon style="font-size: 130px;" color="medium" name="cart"></ion-icon>
+    <ion-text color="medium">
+      <h1>No hay compras</h1>
+    </ion-text>
+    
+  </div>
+  
+  
+  
+  <!---------------------------------- Skeleton----------------------------------->
+  
+  
+  
+  
+  <div *ngIf="!waiting">
+      <ion-card *ngFor="let p of [1,1,1,1,1,1,1,1,1,1,1,1]">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="4">
+              <div class="square">
+                <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+              </div>
+            </ion-col>
+            <ion-col style="padding-top: 15px;" size="6">
+              <div style="padding-bottom: 5px;">
+                  <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
+              </div>
+              <div style="padding-bottom: 5px;">
+                  <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
+              </div>
+              <div style="padding-bottom: 5px;">
+                  <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
+              </div>
+               
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      </div>
+      
+
+
+
+
+
+
+
+  </ion-card>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="warning" (click)="payment()">
+      <ion-icon name="wallet-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>
+<ion-footer>
+  <ion-item lines="none">
+    <ion-label>Total</ion-label>
+    <span slot="end">{{getTotal()|currency: 'USD'}}</span>
+  </ion-item>
+</ion-footer>

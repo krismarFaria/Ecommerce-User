@@ -1,0 +1,36 @@
+img{
+    width: 220px;
+    height: auto;
+    position: relative;
+    left: 60px;
+    right: 0;
+}
+
+p{
+    text-align: justify;
+    font-size: 14px;
+    
+}
+
+h3{
+    color: var(--ion-color-primary);
+}
+
+h3 div{
+    color: var(--ion-color-danger);
+}
+
+h4{
+    text-align: justify;
+}
+
+
+ion-input{
+    text-align: center;
+    border-width: 1px;
+    border-color: var(--ion-color-light);
+    border-style: solid;
+    --color: var(--ion-color-light);
+    border-radius: 5px;
+
+}

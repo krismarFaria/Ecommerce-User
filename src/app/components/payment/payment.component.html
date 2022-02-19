@@ -1,0 +1,149 @@
+<ion-content>
+
+
+
+
+  <app-header-general backButtonModal="true" title="Pagos"></app-header-general>
+  <div class="ion-text-center">
+
+    <ion-item style="position: relative; top: 10px;">
+      <ion-label>Método de pago</ion-label>
+      <ion-select [(ngModel)]="paymentMethod" placeholder="Seleciona">
+        <ion-select-option value="cash">Efectivo</ion-select-option>
+        <ion-select-option value="creditCard">Tarjeta de crédito</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-------------------------Credit Card------------------------------->
+    <ion-card class="creditCar-card animate__animated animate__rotateInUpLeft">
+      <form *ngIf="paymentMethod == 'creditCard'" [formGroup]="creditCardform"
+        (ngSubmit)="submitCreditCard()">
+
+
+        <h3>Tarjeta de crédito</h3>
+
+
+        <ion-item class="item">
+          <ion-label position="floating">Nombre <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required formControlName="name" type="text"></ion-input>
+        </ion-item>
+
+        <div style="padding-top: 10px;" *ngIf="(name.dirty || name.touched) &&
+          name.errors">
+          <div style="border-radius: 20px; font-size: 13px;padding: 0;
+            padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="name.errors?.required">El nombre es requerido</span>
+          </div>
+        </div>
+
+        <ion-item class="item">
+          <ion-label position="floating">Número de tarjeta<ion-text
+              color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="cardNumber" type="tel" maxlength="16"
+            required></ion-input>
+        </ion-item>
+
+        <div style="padding-top: 10px;" *ngIf="(cardNumber.dirty ||
+          cardNumber.touched) && cardNumber.errors">
+          <div style="border-radius: 20px; font-size: 13px;padding: 0;
+            padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="cardNumber.errors?.required">El número de tarjeta es
+              requerido</span>
+          </div>
+        </div>
+
+
+        <ion-item class="item">
+          <ion-label position="floating">Fecha de expiración<ion-text
+              color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="expireDate" placeholder="12/12/2021"
+            type="date" required></ion-input>
+        </ion-item>
+
+        <div style="padding-top: 10px;" *ngIf="(expireDate.dirty ||
+          expireDate.touched) && expireDate.errors">
+          <div style="border-radius: 20px; font-size: 13px;padding: 0;
+            padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="expireDate.errors?.required">La fecha de espiración es
+              requerida</span>
+          </div>
+        </div>
+
+
+
+        <ion-item class="item">
+          <ion-label position="floating">CVV<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input type="tel" formControlName="cvv" maxlength="3"></ion-input>
+        </ion-item>
+
+        <div style="padding-top: 10px;" *ngIf="(cvv.dirty || cvv.touched) &&
+          cvv.errors">
+          <div style="border-radius: 20px; font-size: 13px;padding: 0;
+            padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="cvv.errors?.required">CVV es requerido</span>
+          </div>
+        </div>
+
+        <div class="ion-padding">
+          <ion-button color="warning" type="submit">
+            Pagar
+            <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+          </ion-button>
+
+        </div>
+
+      </form>
+    </ion-card>
+
+
+    <!------------------Cash-------------------------->
+
+
+    <ion-card class="cash-card animate__animated animate__rotateInUpLeft"
+      *ngIf="paymentMethod == 'cash'">
+
+      <h3>Efectivo</h3>
+
+      <ion-item class="item">
+        <ion-label position="floating">Cantidad recibida<ion-text
+            color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required [(ngModel)]="paymentData.amountReceive"
+          type="tel"></ion-input>
+      </ion-item>
+
+
+      <ion-item class="item">
+        <ion-label>Cambio</ion-label>
+        <span *ngIf="getChange()" slot="end">{{getChange() | currency:'USD'}}</span>
+        <span *ngIf="!getChange()" slot="end">{{ 0 | currency:'USD'}}</span>
+      </ion-item>
+
+
+
+
+      <div class="ion-padding">
+        <ion-button (click)="submitCash()" block color="warning"
+          type="submit">
+          Pagar
+          <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+        </ion-button>
+
+      </div>
+
+    </ion-card>
+  </div>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-item lines="none">
+    <ion-label>Total:</ion-label>
+    <span slot="end">{{getTotal()|currency: 'USD'}}</span>
+  </ion-item>
+</ion-footer>

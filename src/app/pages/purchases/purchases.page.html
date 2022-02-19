@@ -1,0 +1,86 @@
+
+<ion-content>
+  <app-header-general title="Compras"></app-header-general>
+
+
+
+
+  <div style="padding-bottom: 30px;">
+ <!---------------------Si cargó y hay compras---------------------------->
+
+
+
+ <div class="animate__animated animate__lightSpeedInRight" *ngIf="!waiting && purchases.length > 0">
+<ion-card *ngFor="let p of purchases"  (click)="purchasesDetail(p)">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="4">
+        <div class="square">
+          <img src="{{p.image}}" alt="">
+        </div>
+      </ion-col>
+      <ion-col style="padding-top: 20px;" size="6">
+       <div><strong>Date:</strong>{{p.date | date: 'shortDate'}}</div> 
+       <div><strong>Products:</strong>{{p.products.length}}</div>
+       <div><strong>Total:</strong>{{p.total | currency: 'USD'}}</div>
+      </ion-col>
+      <ion-col style="padding-top: 20px; text-align: end; padding-top: 55px;" size="2">
+          <ion-icon color="primary" style="font-size: 27px;" name="list-circle-outline"></ion-icon>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
+</div>
+
+
+
+
+
+<!---------------------- Si cargó y no hay compras ------------------------------>
+
+<div  style="padding-top: 25%;" class="ion-text-center" *ngIf="!waiting && purchases.length == 0">
+  <ion-icon style="font-size: 130px;" color="medium" name="cart"></ion-icon>
+  <ion-text color="medium">
+    <h1>No hay compras</h1>
+  </ion-text>
+  
+</div>
+
+
+
+<!---------------------------------- Skeleton----------------------------------->
+
+
+
+
+<div *ngIf="waiting">
+    <ion-card *ngFor="let p of [1,1,1,1,1,1,1,1,1,1,1,1]">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="4">
+            <div class="square">
+              <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+            </div>
+          </ion-col>
+          <ion-col style="padding-top: 15px;" size="6">
+            <div style="padding-bottom: 5px;">
+                <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
+            </div>
+            <div style="padding-bottom: 5px;">
+                <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
+            </div>
+            <div style="padding-bottom: 5px;">
+                <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
+            </div>
+             
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    </div>
+    
+
+
+
+</div>
+</ion-content>

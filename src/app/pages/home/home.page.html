@@ -1,0 +1,74 @@
+<ion-content>
+
+
+    <app-header-general [user]="user"></app-header-general>
+    <app-marketing></app-marketing>
+
+
+    <!----------------------------- Categorias--------------------------------------- -->
+
+
+
+
+    <div class="ion-padding" style="font-weight: bold; left: 15px; position: relative; ">
+        Categorías:
+    </div>
+
+   
+       
+    <ion-slides  *ngIf="waitingCategories"  style="left: 15px;" [options]="op">
+            <ion-slide  *ngFor="let c of [1,1,1,1,1,1,1,1]">
+                <ion-grid fixed>
+                    <ion-row>
+                        <ion-col size="12">
+    
+    
+                            <ion-avatar >
+                               <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+                            </ion-avatar>
+                        </ion-col>
+    
+    
+                        <ion-col style="font-size: 12px;" size="12">
+                           <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+    
+            </ion-slide>
+        </ion-slides>        
+                          
+           
+
+    
+
+
+     <ion-slides  *ngIf="!waitingCategories && categories.length > 0"  style="left: 15px;" [options]="op">
+        <ion-slide (click)="getProducts(c.id)" *ngFor="let c of categories">
+            <ion-grid fixed>
+                <ion-row>
+                    <ion-col size="12">
+
+
+                        <ion-avatar style="margin: 0 auto;">
+                            <img [src]="c.image" />
+                        </ion-avatar>
+                    </ion-col>
+
+
+                    <ion-col style="font-size: 12px;" size="12">
+                        {{c.name}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-slide>
+    </ion-slides>
+
+
+    
+    <app-product-card  [products]="products"  [waiting]="waiting"></app-product-card>
+
+
+
+</ion-content>

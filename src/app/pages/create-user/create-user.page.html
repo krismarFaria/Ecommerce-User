@@ -1,0 +1,106 @@
+<ion-content>
+  <div class="login-section shadow" style="padding: 0px 10px 0px 10px;">
+
+    <ion-text class="ion-text-center" color="primary">
+      <h3>Create User</h3>
+    </ion-text>
+
+    <form [formGroup]="form" (ngSubmit)="Submit()">
+
+      <div class="login-form ion-padding">
+
+
+
+          <div class="form-input">
+              <ion-icon name="person-outline">
+              </ion-icon>
+              <ion-item>
+                <ion-label position="floating">Username</ion-label>
+                <ion-input type="text" required formControlName="username"></ion-input>
+              </ion-item>
+            </div>
+    
+            <div style="padding-top: 10px;" *ngIf="(username.dirty || username.touched) && username.errors">
+              <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+                <span *ngIf="username.errors?.required">El nombre de usuario es requerido</span>
+                <span *ngIf="username.errors?.minlegth">El nombre de usuario debe tener al menos 4 caracteres</span>
+              </div>
+            </div>
+
+        <div class="form-input">
+          <ion-icon name="mail-outline">
+          </ion-icon>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" required formControlName="email"></ion-input>
+          </ion-item>
+        </div>
+
+        <div style="padding-top: 10px;" *ngIf="(email.dirty || email.touched) && email.errors">
+          <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+            <span *ngIf="email.errors?.required">El email es requerido</span>
+            <span *ngIf="email.errors?.email">Inserta un email válido</span>
+          </div>
+        </div>
+
+
+        <div class="form-input">
+            <ion-icon name="call-outline">
+            </ion-icon>
+            <ion-item>
+              <ion-label position="floating">Phone number</ion-label>
+              <ion-input type="tel" maxlength="12" required formControlName="phoneNumber"></ion-input>
+            </ion-item>
+          </div>
+  
+          <div style="padding-top: 10px;" *ngIf="(phoneNumber.dirty || phoneNumber.touched) && phoneNumber.errors">
+            <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+              <span *ngIf="phoneNumber.errors?.required">El número de teléfono es requerido</span>
+              <span *ngIf="phoneNumber.errors?.minlegth">El número de teléfono debe tener al menos 6 caracteres</span>
+            </div>
+          </div>
+
+
+
+
+        <div class="form-input">
+          <ion-icon name="lock-closed-outline">
+          </ion-icon>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" required formControlName="password"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+
+      <div style="padding-top: 10px;" *ngIf="(password.dirty || password.touched) && password.errors">
+        <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 10px;" class="alert alert-danger">
+          <span *ngIf="password.errors?.required">La contraseña es requerida</span>
+        </div>
+      </div>
+
+
+
+      <div class="ion-text-center" style="padding-bottom: 20px;">
+        <ion-button block color="primary" type="submit">
+          Sign up
+        </ion-button>
+      </div>
+
+
+
+      <div style="font-size: 13px;" class="ion-text-center">
+        are you a member?
+        <span style="color: rgb(0, 119, 255);" routerLink="/login">Sign up</span>
+      </div>
+
+
+
+
+    </form>
+  </div>
+
+
+</ion-content>
+

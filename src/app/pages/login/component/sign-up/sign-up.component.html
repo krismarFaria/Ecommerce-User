@@ -1,0 +1,108 @@
+<ion-content>
+    
+
+
+    <ion-text class="ion-text-center" color="primary">
+      <h3>Crear usuario</h3>
+    </ion-text>
+
+    <form [formGroup]="form" (ngSubmit)="Submit()">
+
+      <div class="login-form ion-padding">
+
+<!---------------------------User---------------------------------------->
+
+          <div class="form-input">
+              <ion-icon name="person-outline">
+              </ion-icon>
+              <ion-item>
+                <ion-label position="floating">Nombre de usuario</ion-label>
+                <ion-input type="text" required formControlName="username"></ion-input>
+              </ion-item>
+            </div>
+    
+            <div style="position: relative; bottom:8px;" *ngIf="(username.dirty || username.touched) && username.errors">
+              <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 20px;" class="alert alert-danger">
+                <span *ngIf="username.errors?.required">El nombre de usuario es requerido</span>
+                <span *ngIf="username.errors?.minlegth">El nombre de usuario debe tener al menos 4 caracteres</span>
+              </div>
+            </div>
+
+ <!---------------------------Email---------------------------------------->
+        <div class="form-input">
+          <ion-icon name="mail-outline">
+          </ion-icon>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" required formControlName="email"></ion-input>
+          </ion-item>
+        </div>
+
+        <div style="position: relative; bottom: 8px;" *ngIf="(email.dirty || email.touched) && email.errors">
+          <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 20px;" class="alert alert-danger">
+            <span *ngIf="email.errors?.required">El email es requerido</span>
+            <span *ngIf="email.errors?.email">Ingresa un email válido</span>
+          </div>
+        </div>
+
+<!---------------------------Phone---------------------------------------->
+
+        <div class="form-input">
+            <ion-icon name="call-outline">
+            </ion-icon>
+            <ion-item>
+              <ion-label position="floating">Número de teléfono</ion-label>
+              <ion-input type="tel" maxlength="12" required formControlName="phoneNumber"></ion-input>
+            </ion-item>
+          </div>
+  
+          <div style="position: relative; bottom: 8px;" *ngIf="(phoneNumber.dirty || phoneNumber.touched) && phoneNumber.errors">
+            <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 20px;" class="alert alert-danger">
+              <span *ngIf="phoneNumber.errors?.required">El número de teléfono es requerido</span>
+              <span *ngIf="phoneNumber.errors?.minlegth">El número de teléfono debe tener al menos 6 caracteres</span>
+            </div>
+          </div>
+
+
+<!---------------------------Password---------------------------------------->
+
+        <div class="form-input">
+          <ion-icon name="lock-closed-outline">
+          </ion-icon>
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" required formControlName="password"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+
+      <div style="position: relative; bottom: 10px;" *ngIf="(password.dirty || password.touched) && password.errors">
+        <div style="border-radius: 20px; font-size: 13px;padding: 0; padding-left: 35px;" class="alert alert-danger">
+          <span *ngIf="password.errors?.required">La contraseña es requerida</span>
+        </div>
+      </div>
+
+<!---------------------------Button---------------------------------------->
+
+      <div class="ion-text-center" style="padding-bottom: 20px;">
+        <ion-button block color="warning" type="submit">
+         Registrarse
+        </ion-button>
+      </div>
+
+
+
+      <div  class="ion-text-center">
+        Ya estás registrado?
+        <span style="color: var(--ion-color-primary);" (click)="close()">Iniciar sesión</span>
+      </div>
+
+
+
+
+    </form>
+ 
+
+
+</ion-content>

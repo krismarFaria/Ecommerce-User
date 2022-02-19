@@ -1,0 +1,41 @@
+
+<ion-content>
+  <app-header-general  title="Perfil"></app-header-general>
+
+
+<ion-card class="animate__animated animate__rotateInUpLeft">
+<!---------------------------Img---------------------------------------->
+  
+<ion-avatar  class="avatar">
+  <img [src]="user.image" />
+</ion-avatar>
+
+
+
+   <!------------------------------Username------------------------------------>
+
+ <div  class="username">
+{{user.username}}
+ </div>
+
+ <!---------------------------Button---------------------------------------->
+<div style="top: 50px; position: relative;">
+
+ <ion-item button (click)="abrirModal()">
+    <ion-icon slot="start" name="create-outline"></ion-icon>
+   <ion-label>Editar perfil</ion-label> <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+ </ion-item>
+
+ <ion-item button (click)="logout()">
+    <ion-icon slot="start" name="log-out-outline"></ion-icon>
+    <ion-label>Cerrar sesión</ion-label> <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+  </ion-item>
+
+</div>
+
+
+</ion-card>
+
+
+
+</ion-content>

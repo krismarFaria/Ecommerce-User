@@ -1,0 +1,46 @@
+
+
+<div class="animate__animated animate__lightSpeedInRight" *ngIf="!waiting && marketing.length > 0">
+  <ion-slides  [options]="option" style="padding-top: 25px;">
+  <ion-slide *ngFor="let m of marketing" >
+      <ion-card class="card" >
+          <div class="box">
+              <div class="title">
+                  <p>{{m.name}}</p>
+              </div>
+              <div class="price">
+                  <p>{{m.description}}</p>
+              </div>
+          </div>
+
+          <div class="square">
+              <img [src]="m.image" />
+          </div>
+      </ion-card>
+
+  </ion-slide>
+</ion-slides>
+</div>
+
+<div *ngIf="waiting" >
+  <ion-slides style="padding-top: 25px;">
+  <ion-slide>
+      <ion-card >
+          <div class="box">
+              <div class="title">
+                  <ion-label><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></ion-label>
+                  <ion-label><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></ion-label>
+                  <ion-label><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></ion-label>
+              </div>
+              
+          </div>
+
+          <div class="square">
+             <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </div>
+      </ion-card>
+
+  </ion-slide>
+</ion-slides>
+</div>
+

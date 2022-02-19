@@ -1,0 +1,26 @@
+ion-content{
+    --background: linear-gradient(to right, #023e8a, #0077b6);    
+}
+.title{
+    position: relative;
+      top: 30%; 
+}
+p{
+   position: relative;
+   bottom: 85px;
+    font-size: 50px;
+    color: var(--ion-color-light);
+  }
+
+  ion-icon{
+     position: relative;
+     bottom: 20px;
+      font-size: 130px;
+      color: var(--ion-color-light);
+  }
+  ion-button {
+      text-transform: capitalize;
+      position: relative;
+      top: 15%;
+      font-weight: bold;
+  }
