@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.ecommerceu.app;
 
 import com.getcapacitor.BridgeActivity;
 

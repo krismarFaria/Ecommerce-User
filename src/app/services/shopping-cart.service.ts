@@ -10,7 +10,7 @@ export class ShoppingCartService {
 
   private cart = [];
   private cartItemCount = new BehaviorSubject(0);
-
+ 
   constructor() { }
 
 
@@ -27,6 +27,7 @@ export class ShoppingCartService {
   }
 
   addProduct(product: Product, quantity) {
+   
     let added = false;
     for (let p of this.cart) {
       if (p.id === product.id) {

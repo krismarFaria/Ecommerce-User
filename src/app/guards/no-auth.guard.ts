@@ -18,15 +18,27 @@ export class NoAuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-     return this.auth.authState.pipe(map(auth => {
+    
+      let init = localStorage.getItem('init')
+    
+      return this.auth.authState.pipe(map(auth => {
 
-        if(!auth){
-         
-          return true;
-        }else{
+    
+        if(init && auth){
           this.router.navigate(['/tabs/home']);
-          return false;
-        }   
+          return false
+        }
+
+        if(!init && !auth){
+          this.router.navigate(['init']);
+          return false
+        }
+
+        if(init && !auth){         
+          return true
+        }
+       
+      
       }));
 
 

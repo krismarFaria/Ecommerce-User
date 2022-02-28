@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Products } from 'src/app/services/products';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -26,6 +25,8 @@ export class HomePage implements OnInit {
 
   waiting: boolean;
   waitingCategories: boolean;
+
+  categoryId
   constructor(private cartService: ShoppingCartService,
     private firebaseService: FirebaseService) { }
 
@@ -53,15 +54,17 @@ export class HomePage implements OnInit {
         };
       });
 
-      this.getProducts(this.categories[0].id)
+   
+     this.getProducts(this.categories[0].id)
     }, error => {
 
     })
   }
 
   getProducts(categoryId) {
+    this.categoryId = categoryId;
     this.waiting = true;
-    this.firebaseService.getCollectionConditional('products', ref => ref.where('categoryId', '==', categoryId)).subscribe(data => {
+    this.firebaseService.getCollectionConditional('products', ref => ref.where('categoryId', '==', this.categoryId)).subscribe(data => {
       this.waiting = false;
       this.products = data.map(e => {
         return {

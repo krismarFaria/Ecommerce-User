@@ -8,7 +8,6 @@ import { FavoritesPageRoutingModule } from './favorites-routing.module';
 
 import { FavoritesPage } from './favorites.page';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { ProductsCardComponent } from '../home/components/products-card/products-card.component';
 
 @NgModule({
   imports: [
@@ -18,6 +17,6 @@ import { ProductsCardComponent } from '../home/components/products-card/products
     FavoritesPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [FavoritesPage, ProductsCardComponent]
+  declarations: [FavoritesPage]
 })
 export class FavoritesPageModule {}

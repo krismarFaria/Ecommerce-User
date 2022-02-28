@@ -3,6 +3,7 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Product } from 'src/app/models/product.model';
 import { ModalController } from '@ionic/angular';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-products-details',
@@ -15,14 +16,15 @@ export class ProductsDetailsComponent implements OnInit {
   @Input() favPage;
   favorites = [];
   addedFav: boolean;
-  uid: string;
+  user = {} as User;
   quantity = 1;
+
   constructor(private cartService: ShoppingCartService,
     private modalController: ModalController,
     private firebaseService: FirebaseService) { }
 
   ngOnInit() {
-    this.uid = localStorage.getItem('uid');  
+    this.user = JSON.parse(localStorage.getItem('user'));
     
     if(!this.favPage){
      this.getFavorites(); 
@@ -34,7 +36,10 @@ export class ProductsDetailsComponent implements OnInit {
   }
 
   AddProduct() {
+    
     this.cartService.addProduct(this.p, this.quantity);
+    this.firebaseService.Toast('Se agregó el producto correctamente');
+  
     this.modalController.dismiss();
   }
 
@@ -53,7 +58,7 @@ export class ProductsDetailsComponent implements OnInit {
   getFavorites() {
     this.addedFav = false;
     this.firebaseService.getCollectionConditional('favorites',
-    ref => ref.where('idUser', '==', this.uid)).subscribe(data => {
+    ref => ref.where('idUser', '==', this.user.id)).subscribe(data => {
      
       this.favorites = data.map(e => {
         return {
@@ -89,7 +94,7 @@ export class ProductsDetailsComponent implements OnInit {
       })
     } else {
 
-      this.p.idUser = this.uid;
+      this.p.idUser = this.user.id;
       const loading = await this.firebaseService.loader().create({
         spinner: 'bubbles'
       });

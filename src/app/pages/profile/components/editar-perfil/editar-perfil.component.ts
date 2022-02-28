@@ -32,7 +32,7 @@ export class EditarPerfilComponent implements OnInit {
   }
 
 
-  Submit() {
+  async Submit() {
     if (this.form.valid) {
       this.editProfile();
     } else {

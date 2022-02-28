@@ -12,6 +12,7 @@ import { ProductsDetailsComponent } from 'src/app/pages/home/components/products
 export class ProductCardComponent implements OnInit {
   cart = []
   productService: any;
+  @Input() waitingCategories;
   @Input() products;
   @Input() waiting;
   @Input() favPage;

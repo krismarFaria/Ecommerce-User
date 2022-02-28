@@ -52,63 +52,27 @@
 
     </div>
 
-
-
-
-
+  </ion-card>
  
   <!-- Skeleton -->
 
-
-  <div  style="padding-top: 25%;" class="ion-text-center" *ngIf="!waiting && purchases.length == 0">
-    <ion-icon style="font-size: 130px;" color="medium" name="cart"></ion-icon>
-    <ion-text color="medium">
-      <h1>No hay compras</h1>
-    </ion-text>
-    
-  </div>
-  
-  
-  
-  <!---------------------------------- Skeleton----------------------------------->
-  
-  
-  
-  
-  <div *ngIf="!waiting">
-      <ion-card *ngFor="let p of [1,1,1,1,1,1,1,1,1,1,1,1]">
-        <ion-grid fixed>
-          <ion-row>
-            <ion-col size="4">
-              <div class="square">
-                <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
-              </div>
-            </ion-col>
-            <ion-col style="padding-top: 15px;" size="6">
-              <div style="padding-bottom: 5px;">
-                  <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
-              </div>
-              <div style="padding-bottom: 5px;">
-                  <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
-              </div>
-              <div style="padding-bottom: 5px;">
-                  <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
-              </div>
-               
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+   <div *ngFor="let p of [1,1,1,1,1]">
+      <ion-card *ngIf="waiting">
+        <div>
+          <ion-skeleton-text animated style="width: 100%; height: 70px;"></ion-skeleton-text>
+        </div>
+        <ion-skeleton-text animated style="width: 80%; left: 10px;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 60%; left: 10px;"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 40%; left: 10px;"></ion-skeleton-text>
       </ion-card>
-      </div>
-      
+    </div>
+    
+  <div class="no-cart ion-text-center" *ngIf="!waiting && cart.length == 0">
+      <ion-icon class="ad" name="cart"></ion-icon>
+    <div class="ad-text">No hay productos</div>
+  </div> 
 
 
-
-
-
-
-
-  </ion-card>
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

@@ -35,3 +35,21 @@ h3{
     position: relative;
     padding: 10px;
 }
+
+.btn{
+    padding-top: 10px; 
+
+    button{
+        border-radius: 15px;
+        color: black;
+        font-size: 15px;
+        text-transform: capitalize; 
+        background: var(--ion-color-warning); 
+        width: 200px; 
+        height: 40px;
+    }
+  }
+
+  .text-login{
+    padding-top: 30px;
+}

@@ -5,8 +5,13 @@
 
 <ion-card class="animate__animated animate__rotateInUpLeft">
 <!---------------------------Img---------------------------------------->
-  
-<ion-avatar  class="avatar">
+
+<div class="ion-text-center icon">
+<ion-icon *ngIf="!user.image" style="font-size: 120px;"
+ name="person-circle-outline" color="medium"></ion-icon> 
+</div>
+
+<ion-avatar *ngIf="user.image"  class="avatar">  
   <img [src]="user.image" />
 </ion-avatar>
 

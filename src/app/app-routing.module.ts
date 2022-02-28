@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from "./guards/auth.guard";
 import { NoAuthGuard } from "./guards/no-auth.guard";
+import { InitGuard } from './guards/init.guard';
+
 const routes: Routes = [
  
   {
@@ -24,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'init',
-    loadChildren: () => import('./pages/init/init.module').then( m => m.InitPageModule)
+    loadChildren: () => import('./pages/init/init.module').then( m => m.InitPageModule),canActivate:[InitGuard]
   },
  
 

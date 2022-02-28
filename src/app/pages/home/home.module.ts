@@ -10,7 +10,7 @@ import { HomePage } from './home.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 import { ProductsDetailsComponent } from './components/products-details/products-details.component';
-import { ProductsCardComponent } from './components/products-card/products-card.component';
+
 
 @NgModule({
   imports: [
@@ -20,6 +20,6 @@ import { ProductsCardComponent } from './components/products-card/products-card.
     HomePageRoutingModule,
     ComponentsModule
   ],
-  declarations: [HomePage,ProductsDetailsComponent, ProductsCardComponent ]
+  declarations: [HomePage,ProductsDetailsComponent]
 })
 export class HomePageModule {}

@@ -29,9 +29,17 @@
 
 @import '~animate.css/animate.min.css';
 
-ion-button{
-    text-transform: capitalize;
-}
+  .button-btn{
+      color: black;
+      border-radius: 15px;
+      font-size: 15px;
+      text-transform: capitalize; 
+      background: var(--ion-color-warning); 
+      width: 250px; 
+      height: 40px;
+  }
+
+
 
 .custom-input-file {
     background-color: var(--ion-color-primary);

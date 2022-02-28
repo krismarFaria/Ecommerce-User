@@ -12,4 +12,7 @@ export class InitPage implements OnInit {
   ngOnInit() {
   }
 
+  submit(){
+    localStorage.setItem('init', 'true')
+  }
 }

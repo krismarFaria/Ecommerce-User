@@ -1,6 +1,44 @@
 <ion-content>
+
   <app-header-general title="Favoritos"></app-header-general>
-  <app-products-card [favPage]="favPage" [waiting]="waiting" [products]="favorites" ></app-products-card>
+
+   
+  <ion-grid fixed *ngIf="waiting">
+  
+    <ion-row>
+        <ion-col style="padding-right:20px;" *ngFor="let p of [1,1,1,1,1,1]" size="6">
+            <ion-card>
+                <div class="square">
+                    <ion-skeleton-text animated style="width: 300px; height:
+                       200px;"></ion-skeleton-text>
+                </div>
+  
+                <div class="ion-padding" style="font-weight: bold;">
+                    <ion-skeleton-text animated style="width: 70%;"></ion-skeleton-text>
+                </div>
+  
+                <span style="position: absolute; left: 20%; top: 87%; color:
+                    gray; font-weight: bold;">
+                    <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+                </span>
+  
+                
+            </ion-card>
+  
+  
+  
+  
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="no-favorites ion-text-center" *ngIf="!waiting && favorites.length == 0">
+        <ion-icon class="ad" name="heart"></ion-icon>
+      <div class="ad-text">No hay favoritos</div>
+    </div> 
+  
+
+  <app-product-card [favPage]="favPage" [waiting]="waiting" [products]="favorites" ></app-product-card>
 
 
 </ion-content>

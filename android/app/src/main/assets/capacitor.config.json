@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "Ecommerce-Admin",
+	"appId": "com.ecommerceu.app",
+	"appName": "Ecommerce-Users",
 	"webDir": "www",
 	"bundledWebRuntime": false,
 	"plugins": {

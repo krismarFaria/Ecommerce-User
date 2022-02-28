@@ -60,6 +60,7 @@ export class PaymentComponent implements OnInit {
     if (this.creditCardform.valid) {
       this.purchase.idUser = this.firebaseService.UserId();
       this.purchase.date = this.datePipe.transform(Date.now(), 'YYYY-MM-dd');
+      this.purchase.hour = this.datePipe.transform(Date.now(), 'h:mm a');
       this.purchase.total = this.cartService.getTotal();
       this.purchase.products = this.cartService.getCart();
       this.purchase.image = this.cartService.getCart()[0].image;
@@ -96,6 +97,7 @@ export class PaymentComponent implements OnInit {
     if (this.validator()) {
       this.purchase.idUser = this.firebaseService.UserId();
       this.purchase.date = this.datePipe.transform(Date.now(), 'YYYY-MM-dd');
+      this.purchase.hour = this.datePipe.transform(Date.now(), 'h:mm a');
       this.purchase.total = this.cartService.getTotal();
       this.purchase.products = this.cartService.getCart();
       this.purchase.image = this.cartService.getCart()[0].image;

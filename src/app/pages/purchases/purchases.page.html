@@ -2,10 +2,12 @@
 <ion-content>
   <app-header-general title="Compras"></app-header-general>
 
-
-
-
+<div class="ion-text-center" style="padding: 15px;" >
+<input  type="date" [value]="currentDate"  (change)="formatDate($event)"/>
+</div>
   <div style="padding-bottom: 30px;">
+
+    
  <!---------------------Si cargó y hay compras---------------------------->
 
 
@@ -20,7 +22,7 @@
         </div>
       </ion-col>
       <ion-col style="padding-top: 20px;" size="6">
-       <div><strong>Date:</strong>{{p.date | date: 'shortDate'}}</div> 
+       <div><strong>Date:</strong>{{p.date | date: 'dd/MM/yy'}}</div> 
        <div><strong>Products:</strong>{{p.products.length}}</div>
        <div><strong>Total:</strong>{{p.total | currency: 'USD'}}</div>
       </ion-col>
@@ -34,17 +36,6 @@
 
 
 
-
-
-<!---------------------- Si cargó y no hay compras ------------------------------>
-
-<div  style="padding-top: 25%;" class="ion-text-center" *ngIf="!waiting && purchases.length == 0">
-  <ion-icon style="font-size: 130px;" color="medium" name="cart"></ion-icon>
-  <ion-text color="medium">
-    <h1>No hay compras</h1>
-  </ion-text>
-  
-</div>
 
 
 
@@ -80,6 +71,14 @@
     </div>
     
 
+<!---------------------- Si cargó y no hay compras ------------------------------>
+
+<div class="no-purchases ion-text-center" *ngIf="!waiting && purchases.length == 0">
+    <ion-icon class="ad" name="bag"></ion-icon>
+  <div class="ad-text">No hay compras</div>
+</div> 
+  
+  
 
 
 </div>

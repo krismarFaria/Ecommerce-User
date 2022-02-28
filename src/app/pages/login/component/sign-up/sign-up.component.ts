@@ -96,7 +96,7 @@ export class SignUpComponent implements OnInit {
 
       localStorage.setItem('user', JSON.stringify(this.user));
       this.firebaseService.routerLink().navigateByUrl('tabs/home');
-      this.firebaseService.Toast('Bienvenid@');
+      this.firebaseService.Toast('Bienvenid@ ' + this.user.username);
       this.modalController.dismiss();
       this.form.reset();
 

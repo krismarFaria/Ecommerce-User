@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'Ecommerce-Admin',
+  appId: 'com.ecommerceu.app',
+  appName: 'Ecommerce-Users',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {

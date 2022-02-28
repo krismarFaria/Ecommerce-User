@@ -15,9 +15,9 @@
     </ion-item>
 
     <!-------------------------Credit Card------------------------------->
-    <ion-card class="creditCar-card animate__animated animate__rotateInUpLeft">
-      <form *ngIf="paymentMethod == 'creditCard'" [formGroup]="creditCardform"
-        (ngSubmit)="submitCreditCard()">
+  
+    <ion-card class="creditCar-card animate__animated animate__rotateInUpLeft" *ngIf="paymentMethod == 'creditCard'" [formGroup]="creditCardform">
+     
 
 
         <h3>Tarjeta de crédito</h3>
@@ -41,7 +41,7 @@
           <ion-label position="floating">Número de tarjeta<ion-text
               color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="cardNumber" type="tel" maxlength="16"
+          <ion-input formControlName="cardNumber" type="tel" maxlength="16" minlength="16"
             required></ion-input>
         </ion-item>
 
@@ -59,15 +59,15 @@
           <ion-label position="floating">Fecha de expiración<ion-text
               color="danger">*</ion-text>
           </ion-label>
-          <ion-input formControlName="expireDate" placeholder="12/12/2021"
-            type="date" required></ion-input>
+          <input formControlName="expireDate" placeholder="12/12/2021"
+            type="date" required/>
         </ion-item>
 
         <div style="padding-top: 10px;" *ngIf="(expireDate.dirty ||
           expireDate.touched) && expireDate.errors">
           <div style="border-radius: 20px; font-size: 13px;padding: 0;
             padding-left: 10px;" class="alert alert-danger">
-            <span *ngIf="expireDate.errors?.required">La fecha de espiración es
+            <span *ngIf="expireDate.errors?.required">La fecha de expiración es
               requerida</span>
           </div>
         </div>
@@ -88,28 +88,28 @@
           </div>
         </div>
 
-        <div class="ion-padding">
-          <ion-button color="warning" type="submit">
+        <div style="padding: 30px; position: relative; right: 10px;">
+          <button (click)="submitCreditCard()" type="submit"class="button-btn">
             Pagar
             <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
-          </ion-button>
+          </button>
 
         </div>
 
-      </form>
+     
     </ion-card>
 
 
     <!------------------Cash-------------------------->
 
 
-    <ion-card class="cash-card animate__animated animate__rotateInUpLeft"
+    <ion-card class="creditCar-card animate__animated animate__rotateInUpLeft"
       *ngIf="paymentMethod == 'cash'">
 
       <h3>Efectivo</h3>
 
       <ion-item class="item">
-        <ion-label position="floating">Cantidad recibida<ion-text
+        <ion-label position="floating">Monto a pagar<ion-text
             color="danger">*</ion-text>
         </ion-label>
         <ion-input required [(ngModel)]="paymentData.amountReceive"
@@ -126,12 +126,11 @@
 
 
 
-      <div class="ion-padding">
-        <ion-button (click)="submitCash()" block color="warning"
-          type="submit">
+      <div style="padding: 30px; position: relative; right: 10px;">
+        <button type="submit" class="button-btn" (click)="submitCash()">
           Pagar
           <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
-        </ion-button>
+        </button>
 
       </div>
 

@@ -3,6 +3,7 @@ import { ModalController, ToastController } from '@ionic/angular';
 import { PaymentComponent } from 'src/app/components/payment/payment.component';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Products } from 'src/app/services/products';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,10 +14,16 @@ export class ShoppingCartPage implements OnInit {
   waiting: boolean;
   cart = []
   productService: any;
-
-  constructor(private cartService: ShoppingCartService, private modalController: ModalController, private toastController: ToastController) { }
+  products = [];
+  categoryId
+  
+  constructor(private cartService: ShoppingCartService, 
+    private modalController: ModalController,
+     private toastController: ToastController,
+     private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+    
     this.cart = this.cartService.getCart();   
   }
 

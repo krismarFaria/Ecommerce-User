@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Product } from 'src/app/models/product.model';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-favorites',
@@ -11,7 +12,7 @@ export class FavoritesPage implements OnInit {
   waiting: boolean;
   favorites = [];
   favPage = true;
-  uid: string;
+  user = {} as User;
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
@@ -19,7 +20,7 @@ export class FavoritesPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.uid = localStorage.getItem('uid');
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   ionViewDidEnter() {
@@ -28,7 +29,7 @@ export class FavoritesPage implements OnInit {
   getFavorites() {
     this.waiting = true;
     this.firebaseService.getCollectionConditional('favorites',
-    ref => ref.where('idUser', '==', this.uid)).subscribe(data => {
+    ref => ref.where('idUser', '==', this.user.id)).subscribe(data => {
       
       this.waiting = false;
       this.favorites = data.map(e => {

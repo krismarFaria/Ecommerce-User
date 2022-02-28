@@ -1,11 +1,11 @@
 <ion-content>
 
-  <app-header-general backButtonModal="true" title="Purchase Details"></app-header-general>
+  <app-header-general backButtonModal="true" title="Detalle de la compra"></app-header-general>
 <div style="position: relative; top: 20px;">
   <ion-item lines="none">
     <ion-label >
       <div color="medium" style="font-weight: bold; font-size: 15px;"> Date:</div> 
-      <div>{{p.date | date: 'shortDate'}}</div>
+      <div>{{p.date }}, {{p.hour}}</div>
     </ion-label>
   </ion-item>
 

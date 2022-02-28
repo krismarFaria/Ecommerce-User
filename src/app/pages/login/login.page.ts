@@ -94,7 +94,6 @@ export class LoginPage implements OnInit {
       localStorage.setItem('user', JSON.stringify(this.user));
 
       this.firebaseService.routerLink().navigateByUrl('tabs/home');
-      this.firebaseService.Toast('Bienvenid@, ' + this.user.username);
       this.form.reset();
       
       loading.dismiss();

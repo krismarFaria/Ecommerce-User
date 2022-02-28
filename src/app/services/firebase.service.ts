@@ -30,6 +30,7 @@ export class FirebaseService {
     });
   }
 
+  
   getCollection(collection) {
     return this.db.collection(collection).snapshotChanges();
   }
